@@ -1,5 +1,5 @@
 .container {
-    background-image: url(../../public/galaxia.png);
+    background-image: url(./galaxia.png);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
