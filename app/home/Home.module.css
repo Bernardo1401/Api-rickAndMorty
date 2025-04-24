@@ -1,3 +1,4 @@
+
 .container {
     padding: 2rem;
     background-image: url("/image.png");
@@ -12,70 +13,180 @@
     font-size: 3rem;
     text-align: center;
     margin-bottom: 2rem;
-    background-image: linear-gradient(to bottom, rgba(4, 232, 232, 0.888), rgb(1, 238, 255), rgb(0, 206, 62));
-    color: rgb(255, 255, 255);
+    background: linear-gradient(45deg, #469c00, #75ff05, #d3de03, #71d300);
+    background-size: 400% 100%;
+    animation: degrade 10s linear infinite alternate;
     background-clip: text;
-    -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-  
-  .controls {
+
+.controls {
     display: flex;
     justify-content: center;
     gap: 1rem;
     margin-bottom: 2rem;
     flex-wrap: wrap;
-  }
-  
-  .input {
+}
+
+.input {
     width: 300px;
-    padding: 10px;
+    padding: 12px 16px;
     border-radius: 10px;
-  }
-  
-  .buttonSearch {
-    width: 122px;
-    height: 40px;
-    border-radius: 8px;
-    background-color: lightgreen;
+    font-size: 1rem;
+    background-color: #ffffff57;
     color: white;
+    border: 1px solid #b700ff;
+    backdrop-filter: blur(4px);
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.input::placeholder {
+    color: #dddddd;
+}
+
+.input:focus {
+    border-color: #b700ff;
+    box-shadow: 0 0 0 3px rgba(162, 0, 255, 0.419);
+}
+
+.buttonSearch,
+.buttonReset,
+.buttonNav {
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
     cursor: pointer;
-    transition: all 0.5s ease;
-  }
-  
-  .buttonSearch:hover {
-    background-color: green;
-    color: lightgray;
-  }
-  
-  .buttonReset {
-    width: 122px;
-    border-radius: 8px;
-    background-color: red;
+    user-select: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     color: white;
-    cursor: pointer;
-    transition: all 0.5s ease;
-  }
-  
-  .buttonReset:hover {
-    background-color: darkred;
-    color: lightgray;
-  }
-  
-  .loading {
+}
+
+.buttonSearch {
+    background: linear-gradient(135deg, #28a745, #34d058);
+}
+
+.buttonSearch:hover {
+    background: linear-gradient(135deg, #218838, #28a745);
+    transform: scale(1.03);
+}
+
+.buttonReset {
+    background: linear-gradient(135deg, #dc3545, #ff5e6c);
+}
+
+.buttonReset:hover {
+    background: linear-gradient(135deg, #c82333, #dc3545);
+    transform: scale(1.03);
+}
+
+.buttonNav {
+    background: linear-gradient(135deg, #000000, #b700ff);
+}
+
+.buttonNav:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(162, 0, 255, 0.419);
+}
+
+.buttonNav:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(102, 0, 255, 0.533);
+}
+
+.buttonNav:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.pageIndicator {
+    font-weight: bold;
+    font-size: 1.5rem;
+    background: linear-gradient(135deg, #000000, #b700ff);
+    padding: 10px 20px;
+    border-radius: 10px;
+    color: white;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.loading {
     text-align: center;
-  }
-  
-  .notFound {
-    font-size: 2.5rem;
-    text-align: center;
-    color: tomato;
-    margin-top: 4rem;
-  }
-  
-  .grid {
+    color: #fff;
+    font-size: 1.25rem;
+}
+
+.grid {
     display: flex;
     flex-wrap: wrap;
     gap: 30px;
     justify-content: center;
+}
+
+.navControls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+    flex-wrap: wrap;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.fadeIn {
+    opacity: 1;
+    transition: opacity 0.5s ease-in;
+}
+
+.fadeOut {
+    opacity: 0;
+    transition: opacity 0.5s ease-out;
+    pointer-events: none;
+}
+
+.loaderWrapper {
+    opacity: 1;
+    transition: opacity 0.3s ease-out;
   }
+  
+  .loaderWrapper.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+
+@media (max-width: 600px) {
+    .input {
+        width: 100%;
+    }
+
+    .buttonSearch,
+    .buttonReset,
+    .buttonNav {
+        width: 100%;
+    }
+
+    .controls,
+    .navControls {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@keyframes degrade {
+  0% {
+      background-position-x: 0%;
+  }
+  100% {
+      background-position: 400%;
+  }
+}
